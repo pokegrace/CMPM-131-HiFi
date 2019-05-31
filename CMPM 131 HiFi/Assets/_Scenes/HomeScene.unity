@@ -445,7 +445,7 @@ RectTransform:
   - {fileID: 604520401}
   - {fileID: 135777501}
   m_Father: {fileID: 1647098203}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -508,6 +508,78 @@ MonoBehaviour:
   swapButton: {fileID: 2003718806}
   messageButton: {fileID: 604520402}
   profileButton: {fileID: 135777502}
+--- !u!1 &474042372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 474042373}
+  - component: {fileID: 474042374}
+  m_Layer: 5
+  m_Name: UserHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &474042373
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474042372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647098203}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &474042374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474042372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a926edc9d880a3b43bbb20cdc8504ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employeeNames:
+  - Sharon
+  - Ashley
+  - David
+  - Brian
+  - Lindsey
+  - Daniel
+  - Anne
+  - Fred
+  - Alex
+  - Bob
+  shiftPositions:
+  - Server
+  - Server
+  - Server
+  - Manager
+  - Manager
+  - Grill
+  - Dishwasher
+  - Host
+  - Host
+  - Grill
+  possibleEmployees: []
+  possibleShifts: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1717,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 474042373}
   - {fileID: 363002797}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1719,7 +1792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00004711653}
+  m_AnchoredPosition: {x: 0, y: -0.000042208754}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1740754764
@@ -1816,30 +1889,6 @@ MonoBehaviour:
   shiftButton: {fileID: 234070960484352367, guid: 1789c2b39285299499363c45fe73e7d2,
     type: 3}
   upcomingShiftsRect: {fileID: 1740754762}
-  employeeNames:
-  - Sonya
-  - Rich
-  - Cory
-  - Mason
-  - Micah
-  - Megan
-  - Cassie
-  - Danny
-  - Kim
-  - Paul
-  shiftPositions:
-  - General Manager
-  - Assistant Manager
-  - Host
-  - Host
-  - Server
-  - Server
-  - Server
-  - Server
-  - Bar
-  - Dishwasher
-  - Kitchen
-  - Kitchen
 --- !u!4 &1783043449
 Transform:
   m_ObjectHideFlags: 0
