@@ -7,6 +7,7 @@ public class dateButtonHandler : MonoBehaviour
     [SerializeField] private Sprite none;
     [SerializeField] private Button dateButton;
     [SerializeField] private GameObject calendarPanel;
+    [SerializeField] private Text textField;
 
     private Button lastClicked;
 
@@ -48,5 +49,16 @@ public class dateButtonHandler : MonoBehaviour
 
         b.GetComponent<Image>().sprite = redCircle;
         lastClicked = b;
+
+        // right now, this is the same result for all buttons
+        foreach(Employee e in UserHandler.instance.finalizedEmployees)
+        {
+            // randomize shifts for the employees
+            int newShiftStart = e.shift.RandomizeShiftStartTime(8, 13);
+            int newShiftEnd = e.shift.RandomizeShiftEndTime(newShiftStart, 20);
+            string newShift = e.shift.FormatShiftTime(newShiftStart, newShiftEnd);
+
+            textField.text = textField.text + e.name + " - " + e.shift.shiftPosition + ": " + newShift + "\n";
+        }
     }
 }

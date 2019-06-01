@@ -21,7 +21,7 @@ public class Shift
         shiftAccepted = true;
     }
 
-    private int RandomizeShiftStartTime(int min, int max)
+    public int RandomizeShiftStartTime(int min, int max)
     {
         int outTime;
 
@@ -31,7 +31,7 @@ public class Shift
         return outTime;
     }
 
-    private int RandomizeShiftEndTime(int min, int max)
+    public int RandomizeShiftEndTime(int min, int max)
     {
         int outTime;
 
@@ -41,7 +41,7 @@ public class Shift
         return outTime;
     }
 
-    private int RandomizeShiftDate(int min, int max)
+    public int RandomizeShiftDate(int min, int max)
     {
         int outDate;
 
@@ -51,7 +51,7 @@ public class Shift
         return outDate;
     }
 
-    public string FormatShiftTime()
+    public string FormatShiftTime(int shiftStartTime, int shiftEndTime)
     {
         string shiftTime = "";
         if (shiftStartTime <= 12)

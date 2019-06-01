@@ -13,6 +13,8 @@ public class UserHandler : MonoBehaviour
     public List<string> possibleShifts;
     public List<Employee> finalizedEmployees;
 
+    public Employee swapEmployee;
+
     private void Awake()
     {
         //Check if there is already an instance of UserHandler
@@ -47,6 +49,7 @@ public class UserHandler : MonoBehaviour
             int r = Random.Range(0, possibleEmployees.Count);
             int r1 = Random.Range(0, possibleShifts.Count);
             finalizedEmployees.Add(new Employee(possibleEmployees[r], possibleShifts[r1]));
+
             possibleEmployees.RemoveAt(r);
             possibleShifts.RemoveAt(r);
         }
