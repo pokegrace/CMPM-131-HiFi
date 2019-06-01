@@ -32,7 +32,7 @@ public class UserHandler : MonoBehaviour
 
     private void Start()
     {
-        user = new User("Helena", "Server");
+        user = new User("Helena", "Smith", "Server");
 
         GenerateRandomShifts(5);
     }
