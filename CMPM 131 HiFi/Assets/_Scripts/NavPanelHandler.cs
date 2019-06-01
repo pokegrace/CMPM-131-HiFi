@@ -13,15 +13,27 @@ public class NavPanelHandler : MonoBehaviour
     [SerializeField] private Button swapButton;
     [SerializeField] private Button messageButton;
     [SerializeField] private Button profileButton;
+
+    private Button lastClicked;
     
     private void Start()
     {
-        homeButton.onClick.AddListener(() => SceneManager.LoadScene("HomeScene"));
-        calendarButton.onClick.AddListener(() => SceneManager.LoadScene("CalendarScene"));
-        notifButton.onClick.AddListener(() => SceneManager.LoadScene("NotificationScene"));
-        clockButton.onClick.AddListener(() => SceneManager.LoadScene("ClockScene"));
-        swapButton.onClick.AddListener(() => SceneManager.LoadScene("SwapScene"));
-        messageButton.onClick.AddListener(() => SceneManager.LoadScene("MessageScene"));
-        profileButton.onClick.AddListener(() => SceneManager.LoadScene("ProfileScene"));
+        homeButton.onClick.AddListener(() => NavClicked("HomeScene", homeButton));
+        calendarButton.onClick.AddListener(() => NavClicked("CalendarScene", calendarButton));
+        notifButton.onClick.AddListener(() => NavClicked("NotificationScene", notifButton));
+        clockButton.onClick.AddListener(() => NavClicked("ClockScene", clockButton));
+        swapButton.onClick.AddListener(() => NavClicked("SwapScene", swapButton));
+        messageButton.onClick.AddListener(() => NavClicked("MessageScene", messageButton));
+        profileButton.onClick.AddListener(() => NavClicked("ProfileScene", profileButton));
+    }
+
+    private void NavClicked(string sceneName, Button b)
+    {
+        if (lastClicked != null)
+            lastClicked.transform.localScale = new Vector3(1, 1, 1);
+
+        SceneManager.LoadScene(sceneName);
+        b.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        lastClicked = b;
     }
 }
