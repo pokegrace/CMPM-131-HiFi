@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SwapHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject overlayPanel;
+    [SerializeField] private GameObject requestOverlay;
     [SerializeField] private GameObject toSwapPanel;
     [SerializeField] private GameObject shiftDesiredPanel;
     [SerializeField] private GameObject requestPrompt;
     [SerializeField] private GameObject cancelPrompt;
+    [SerializeField] private GameObject shiftButton;
+    [SerializeField] private GameObject upcomingShiftsRect;
+    [SerializeField] private GameObject swapOverlay;
     [SerializeField] private Button requestButton;
     [SerializeField] private Button cancelButton;
 
@@ -23,7 +27,22 @@ public class SwapHandler : MonoBehaviour
     {
         user = UserHandler.instance.user;
 
-        PopulatePanels();
+        // display employee shifts as buttons
+        if(UserHandler.instance.swapEmployee == null)
+        {
+            foreach (Employee e in UserHandler.instance.finalizedEmployees)
+            {
+                GameObject newButton = Instantiate(shiftButton, upcomingShiftsRect.transform);
+                newButton.transform.GetChild(0).GetComponent<Text>().text = e.name + " - " + e.shift.shiftPosition + ": " +
+                    e.shift.FormatShiftTime(e.shift.shiftStartTime, e.shift.shiftEndTime);
+                newButton.GetComponent<Button>().onClick.AddListener(() => { UserHandler.instance.swapEmployee = e; swapOverlay.SetActive(false); PopulatePanels(); });
+            }
+        }
+        else
+        {
+            PopulatePanels();
+            swapOverlay.SetActive(false);
+        }
 
         requestButton.onClick.AddListener(() => ClickRequest());
         cancelButton.onClick.AddListener(() => ClickCancel());
@@ -81,6 +100,8 @@ public class SwapHandler : MonoBehaviour
             requestPrompt.SetActive(false);
             requestPromptActive = false;
         }
+
+        UserHandler.instance.swapEmployee = null;
     }
 
     // reset all values
@@ -101,13 +122,15 @@ public class SwapHandler : MonoBehaviour
             cancelPrompt.SetActive(false);
             cancelPromptActive = false;
         }
+
+        swapOverlay.SetActive(true);
     }
 
     public void SwapPanelClick()
     {
         if (overlayActive)
         {
-            overlayPanel.SetActive(false);
+            requestOverlay.SetActive(false);
             overlayActive = false;
         }
     }
@@ -116,7 +139,7 @@ public class SwapHandler : MonoBehaviour
     {
         if(!overlayActive)
         {
-            overlayPanel.SetActive(true);
+            requestOverlay.SetActive(true);
             overlayActive = true;
         }
     }
